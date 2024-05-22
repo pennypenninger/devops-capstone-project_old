@@ -9,7 +9,6 @@ from service.models import Account
 from service.common import status  # HTTP Status Codes
 from . import app  # Import Flask application
 
-
 ############################################################
 # Health Endpoint
 ############################################################
@@ -17,7 +16,6 @@ from . import app  # Import Flask application
 def health():
     """Health Status"""
     return jsonify(dict(status="OK")), status.HTTP_200_OK
-
 
 ######################################################################
 # GET INDEX
@@ -33,7 +31,6 @@ def index():
         ),
         status.HTTP_200_OK,
     )
-
 
 ######################################################################
 # CREATE A NEW ACCOUNT
@@ -73,7 +70,6 @@ def create_accounts():
         app.logger.info("Returning [%s] accounts", len(account_list))
         return jsonify(account_list), status.HTTP_200_OK
 
-
 ######################################################################
 # READ AN ACCOUNT
 ######################################################################
@@ -89,7 +85,6 @@ def create_accounts():
         if not account:
             abort(status.HTTP_404_NOT_FOUND, f"Account with id [{account_id}] could not be found.")
         return account.serialize(), status.HTTP_200_OK
-
 
 ######################################################################
 # UPDATE AN EXISTING ACCOUNT
@@ -109,7 +104,6 @@ def create_accounts():
         account.update()
         return account.serialize(), status.HTTP_200_OK
 
-
 ######################################################################
 # DELETE AN ACCOUNT
 ######################################################################
@@ -126,11 +120,9 @@ def create_accounts():
             account.delete()
         return "", status.HTTP_204_NO_CONTENT
 
-
 ######################################################################
 #  U T I L I T Y   F U N C T I O N S
 ######################################################################
-
 
 def check_content_type(media_type):
     """Checks that the media type is correct"""
